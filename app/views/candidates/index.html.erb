@@ -1,0 +1,44 @@
+<%= render_card class: "w-full px-6 py-8" do %>
+  <%= render "shared/title", title: "Candidatos" %>
+    <%= form_with(url: candidates_path, method: :get, data: { controller: "filter" }, class: "grid lg:grid-cols-3 gap-4 mt-6 mb-12") do |form|%>
+      <div class="flex flex-row gap-y-3">
+        <div class="flex flex-col gap-y-3 flex-grow">
+          <%= form.label :query, "Buscar" %>
+          <%= form.text_field :query, value: params[:query], class: "w-full", placeholder: "Código do concurso", data: { "filter-target": "query" } %>
+        </div>
+        <%= render_button 'Limpar', class: 'self-end px-4 ml-2 bg-gray-500 hover:bg-gray-400', data: { action: "click->filter#clear" } %>
+        <%= render_button 'Buscar', class: 'self-end px-4 ml-2', data: { action: "click->filter#perform" } %>
+      </div>
+    <% end %>
+    <div class="overflow-hidden w-full">
+      <div class="overflow-x-auto w-full">
+        <%= render_table do %>
+          <%= table_head do %>
+            <%= table_header "Nome" %>
+            <%= table_header "Data de nascimento" %>
+            <%= table_header "CPF" %>
+            <%= table_header "Profissões" %>
+          <% end %>
+          <%= table_body do %>
+            <% @candidates.each do |candidate| %>
+              <%= table_row do %>
+                <%= table_column do %>
+                  <%= candidate.name %>
+                <% end %>
+                <%= table_column do %>
+                  <%= candidate.birthday %>
+                <% end %>
+                <%= table_column do %>
+                  <%= candidate.identity %>
+                <% end %>
+                <%= table_column do %>
+                  <%= candidate.professions.pluck(:name).join(", ") %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= paginate @candidates %>
+      </div>
+    </div>
+<% end %>

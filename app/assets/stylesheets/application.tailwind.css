@@ -1,0 +1,119 @@
+@import "inter.css";
+@import "roboto.css";
+@import "shadcn.css";
+@import "../../../vendor/stylesheets/tom-select.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  input[type="time"],
+  input[type="date"],
+  textarea,
+  select {
+    @apply rounded border-[#B9B9B9] focus-visible:outline-none focus-visible:border-0 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  input[type="time"],
+  input[type="date"],
+  select:disabled,
+  textarea {
+    @apply read-only:bg-[#EEEEEE] read-only:focus-visible:ring-0 read-only:border-transparent read-only:cursor-not-allowed disabled:bg-[#EEEEEE] disabled:focus-visible:ring-0 disabled:border-transparent disabled:cursor-not-allowed;
+  }
+
+  .disabled {
+    @apply bg-[#EEEEEE] focus-visible:ring-0 border-transparent cursor-not-allowed;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply border-black text-primary focus:ring-primary;
+  }
+}
+
+.ts-control {
+  @apply w-full rounded border-[#B9B9B9] text-base focus-visible:outline-none focus-visible:border-0 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
+}
+
+.ts-control input {
+  @apply text-sm ;
+}
+
+.ts-wrapper.multi.has-items .ts-control {
+  padding: 0.23rem;
+}
+
+.ts-wrapper.plugin-remove_button .item {
+  @apply rounded-md;
+}
+
+.ts-wrapper.plugin-remove_button .item .remove {
+  @apply border-none text-lg leading-none py-1 rounded-r-lg;
+}
+
+.ts-dropdown {
+  @apply rounded-md border border-solid border-t border-gray-300;
+}
+
+.ts-dropdown [data-selectable].option,
+.ts-dropdown .no-results {
+  @apply py-2;
+}
+.ts-dropdown [data-selectable].option:first-child {
+  @apply rounded-t-md;
+}
+
+.ts-dropdown [data-selectable].option:last-child {
+  @apply rounded-b-md;
+}
+.ts-dropdown .create:hover,
+.ts-dropdown .option:hover,
+.ts-dropdown .active {
+  @apply bg-primary-foreground text-primary;
+}
+
+.ts-dropdown .spinner {
+  @apply h-auto w-auto;
+}
+
+.ts-dropdown .spinner:after {
+  @apply h-5 w-5 border-2 p-0 my-0 inline-block;
+}
+
+.ts-wrapper:not(.form-control):not(.form-select).single .ts-control {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  print-color-adjust: exact;
+}
+
+.ts-control > * {
+  @apply line-clamp-1;
+}
+
+.content-pdf-color {
+  color: #666666;
+}
+
+label {
+  @apply w-fit;
+}
+
+.clear-button {
+  padding-right: 10px !important;
+}

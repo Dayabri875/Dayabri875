@@ -1,0 +1,45 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 1
+  client: one
+  supplier: one
+  invoiced_by: MyString
+  delivery_date: 2024-06-03
+  product: one
+  amount_weight: 1.5
+  ipi: 9.99
+  total: 1
+  installment_number: 1
+  expiration_date: 2024-06-03
+  seller: MyString
+  invoice: MyString
+  freight: 1
+  triangular_delivery: false
+  triangular_client_id: 1
+  observations: MyText
+  buyer_id: 1
+  supplier_observations: MyText
+  sale_order_id: 1
+
+two:
+  type: 1
+  client: two
+  supplier: two
+  invoiced_by: MyString
+  delivery_date: 2024-06-03
+  product: two
+  amount_weight: 1.5
+  ipi: 9.99
+  total: 1
+  installment_number: 1
+  expiration_date: 2024-06-03
+  seller: MyString
+  invoice: MyString
+  freight: 1
+  triangular_delivery: false
+  triangular_client_id: 1
+  observations: MyText
+  buyer_id: 1
+  supplier_observations: MyText
+  sale_order_id: 1

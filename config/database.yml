@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['PROJECT_DATABASE_HOST'] %>
+  username: <%= ENV['PROJECT_DATABASE_USERNAME'] %>
+  password: <%= ENV['PROJECT_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("PROJECT_DATABASE_NAME") { 'project_development' } %>
+
+production:
+  url: <%= ENV["DATABASE_URL"] %>

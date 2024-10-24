@@ -1,0 +1,45 @@
+require:
+  - rubocop/cop/internal_affairs
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rake
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+    - 'config/environments/*.rb'
+    - 'config/initializers/*.rb'
+    - 'app/helpers/components/*.rb'
+  TargetRubyVersion: 3.2.2
+  SuggestExtensions: false
+
+RSpec/VariableName:
+  Exclude:
+    - 'spec/requests/**/*_spec.rb'
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - 'spec/requests/**/*_spec.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Exclude:
+    - 'spec/requests/**/*_spec.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/**/*.rb'
+    - 'app/components/**/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'

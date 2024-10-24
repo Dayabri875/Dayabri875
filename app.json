@@ -1,0 +1,12 @@
+{
+  "name": "projeto",
+  "description": "projeto",
+  "keywords": [
+    "rails"
+  ],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rails db:migrate"
+    }
+  }
+}

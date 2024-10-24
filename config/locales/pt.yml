@@ -1,0 +1,17 @@
+pt:
+  success:
+    created: "Criado com sucesso."
+    updated: "Atualizado com sucesso."
+    deleted: "Deletado com sucesso."
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " e "
+      last_word_connector: ", e "

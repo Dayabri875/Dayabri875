@@ -1,0 +1,20 @@
+<%= image_tag "logo.png",size: 200 %>
+<nav class="">
+  <ul class="flex flex-col gap-y-2  font-sans">
+    <li class="hover:bg-neutral data-[active=true]:bg-neutral p-2 font-normal">
+      <%= link_to candidates_path, class: "items-center gap-x-3 flex" do  %>
+        <%= phosphor_icon "identification-card", class: "min-w-6 h-6", style: "bold" %> Candidatos
+      <% end %>
+    </li>
+    <li class="hover:bg-neutral data-[active=true]:bg-neutral p-2 font-normal">
+      <%= link_to contests_path, class: "items-center gap-x-3 flex" do  %>
+        <%= phosphor_icon "trend-up", class: "min-w-6 h-6", style: "bold" %> Concursos
+      <% end %>
+    </li>
+    <li class="hover:bg-neutral data-[active=true]:bg-neutral p-2 font-normal">
+      <%= link_to professions_path, class: "items-center gap-x-3 flex" do  %>
+        <%= phosphor_icon "archive", class: "min-w-6 h-6", style: "bold" %> Profissões
+      <% end %>
+    </li>
+  </ul>
+</nav>

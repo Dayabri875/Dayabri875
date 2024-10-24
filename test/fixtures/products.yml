@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  code: MyString
+  description: MyString
+  weight: 9.99
+  unit_price_cents: 1
+  ncm: MyString
+
+two:
+  user: two
+  name: MyString
+  code: MyString
+  description: MyString
+  weight: 9.99
+  unit_price_cents: 1
+  ncm: MyString

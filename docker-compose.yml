@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  db:
+    image: 'postgres:13'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5433:5432'
+  app:
+    env_file:
+      - ./.env.development.docker.local
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    command:
+      - /bin/sh
+      - -c
+      - |
+        rm -rf /docker/app/tmp/pids/server.pid
+        bundle install
+        bundle exec rails db:create db:migrate db:seed
+        bundle exec rails tailwindcss:watch
+        bundle exec rails server -p 3000 -b 0.0.0.0
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/docker/app
+    depends_on:
+      - db
+      - redis
+
+  redis:
+    image: 'redis:latest'
+    command: redis-server
+    ports:
+      - '6380:6379'
+    volumes:
+      - 'redis:/data'
+
+volumes:
+  redis:
+  postgres:

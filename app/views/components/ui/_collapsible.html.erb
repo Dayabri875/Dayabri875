@@ -1,0 +1,21 @@
+<div
+  data-state="<%= check_collapsible_open ? '' : 'hidden' %>"
+  class="space-y-2"
+  data-controller="ui--collapsible"
+  data-ui--collapsible-target="wrapper"
+  data-open="<%= check_collapsible_open ? 'true' : 'false' %>"
+  >
+  <div
+    class="flex items-center justify-between space-x-4 p-2 hover:bg-[#EEEEEE]"
+    data-action="click->ui--collapsible#toggle">
+    <h4 class="items-center gap-x-3 flex"><%= trigger %></h4>
+       <%= phosphor_icon "caret-down", class: "size-4", style: "bold"%>
+      <span class="sr-only">Toggle</span>
+  </div>
+  <ul
+    data-ui--collapsible-target="item"
+    data-state="closed"
+    class="space-y-2 <%= check_collapsible_open ? '' : 'hidden' %>">
+    <%= yield :body %>
+  </ul>
+</div>

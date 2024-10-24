@@ -1,0 +1,44 @@
+<%= render_card class: "w-full px-6 py-8" do %>
+  <%= render "shared/title", title: "Concursos" %>
+  <%= form_with(url: contests_path, method: :get, data: { controller: "filter mask" }, class: "grid lg:grid-cols-3 gap-4 mt-6 mb-12") do |form|%>
+    <div class="flex flex-row gap-y-3">
+      <div class="flex flex-col gap-y-3 flex-grow">
+        <%= form.label :query, "Buscar" %>
+        <%= form.text_field :query, value: params[:query], class: "w-full", placeholder: "CPF do candidato", data: { "filter-target": "query", action: "input->mask#cpf" }, maxlength: 14 %>
+      </div>
+      <%= render_button 'Limpar', class: 'self-end px-4 ml-2 bg-gray-500 hover:bg-gray-400', data: { action: "click->filter#clear" } %>
+      <%= render_button 'Buscar', class: 'self-end px-4 ml-2', data: { action: "click->filter#perform" } %>
+    </div>
+  <% end %>
+  <div class="overflow-hidden w-full">
+    <div class="overflow-x-auto w-full">
+      <%= render_table do %>
+        <%= table_head do %>
+          <%= table_header "Órgão" %>
+          <%= table_header "Edital" %>
+          <%= table_header "Código do Concurso" %>
+          <%= table_header "Lista de vagas" %>
+        <% end %>
+        <%= table_body do %>
+          <% @contests.each do |contest| %>
+            <%= table_row do %>
+              <%= table_column do %>
+                <%= contest.organ %>
+              <% end %>
+              <%= table_column do %>
+                <%= contest.edital %>
+              <% end %>
+              <%= table_column do %>
+                <%= contest.code %>
+              <% end %>
+              <%= table_column do %>
+                <%= contest.professions.pluck(:name).join(", ") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= paginate @contests %>
+    </div>
+  </div>
+<% end %>

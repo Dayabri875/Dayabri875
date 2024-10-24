@@ -1,0 +1,23 @@
+<div id="dropzone" data-controller="ui--dropzone" aria-disabled="<%= disabled || readonly %>" data-action="drop->ui--dropzone#acceptFiles" class="aria-[disabled=true]:bg-[#eeeeee] aria-[disabled=true]:cursor-not-allowed h-10 flex items-center gap-x-2 border border-[#B9B9B9] rounded-sm overflow-hidden hover:bg-[#EEEEEE]/20 relative">
+  <button type="button" class="bg-[#EEEEEE] px-2 border-r border-[#B9B9B9] h-10 min-w-[123px]" data-action="click->ui--dropzone#trigger">
+    <span class="text-sm">Buscar arquivo</span>
+  </button>
+  <span data-ui--dropzone-target="fileName" class="line-clamp-1 flex-1" data-action="click->ui--dropzone#trigger">
+    <%= field.object.send(name)&.identifier %>
+  </span>
+  <%= field.file_field name, disabled: disabled, readonly: readonly, class: "hidden", data: { "ui--dropzone-target": "fileInput", action: "change->ui--dropzone#acceptFiles"} %>
+  <% if field.object.send(name)&.url.present? %>
+
+    <% if !disabled && !readonly %>
+      <%= field.label "remove_#{name}", class:"absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer #{ disabled || readonly ? 'bg-[#eeeeee]' : 'bg-white' } px-2", data: { action:"click->ui--dropzone#clearFile" } do %>
+        <%= phosphor_icon "trash", style: "outlined", class: "size-6" %>
+        <span class="sr-only">Remover arquivo</span>
+        <%= field.hidden_field "remove_#{name}", data: { "ui--dropzone-target": "removeFile" } %>
+      <% end %>
+    <% end %>
+    <%= link_to field.object.send(name)&.url, class:"absolute top-1/2 transform -translate-y-1/2 cursor-pointer #{ disabled || readonly ? 'bg-[#eeeeee] right-0 px-2' : 'bg-white right-10' } pl-1", data: { "ui--dropzone-target": "openFile" }, target: '_blank' do %>
+      <%= phosphor_icon "download-simple", style: "outlined" %>
+      <span class="sr-only">Baixar arquivo</span>
+    <% end %>
+  <% end %>
+</div>
