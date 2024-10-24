@@ -10,7 +10,7 @@
 1. Copy env.example
 
 ```shell
-cp .env.example .env.development.docker.local
+cp .env.docker .env.development.docker.local
 ```
 
 2. Build docker images
